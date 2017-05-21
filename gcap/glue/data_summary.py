@@ -27,43 +27,43 @@ def json_dataset_parse(dataset):
         temp = []
         if "_um_autosome" in j:
             auto = []
-            for i in js["stat"].values():
-                auto.append(str(i.values()[2]))
+            for i in list(js["stat"].values()):
+                auto.append(str(list(i.values())[2]))
             temp.append(";".join(auto))
             data+=temp
 
         if "_fastq" in j:
             fastq = []
-            for i in js["stat"].values():
-                fastq.append(str(i.values()[1]))
+            for i in list(js["stat"].values()):
+                fastq.append(str(list(i.values())[1]))
             temp.append(";".join(fastq))
             data+=temp
 
         if "_sample_spot_5M" in j:
             spot = []
-            for i in js["stat"].values():
-                spot.append(str(i.values()[1]))
+            for i in list(js["stat"].values()):
+                spot.append(str(list(i.values())[1]))
             temp.append(";".join(spot))
             data+=temp
 
         if "redun" in j:
-            temp.append(";".join(map(str,js["stat"].values())))
+            temp.append(";".join(map(str,list(js["stat"].values()))))
             data+=temp
 
         if "dhs" in j:
             dhs = []
-            for i in js["stat"].values():
-                dhs.append(str(i.values()[0]))
+            for i in list(js["stat"].values()):
+                dhs.append(str(list(i.values())[0]))
             temp.append(";".join(dhs))
             data+=temp
 
         if "_peaks" in j:
-            temp.append(";".join(map(str, js["stat"]["all_peaks"].values())))
-            temp.append(";".join(map(str,js["stat"]["5M_spot"].values())))
+            temp.append(";".join(map(str, list(js["stat"]["all_peaks"].values()))))
+            temp.append(";".join(map(str,list(js["stat"]["5M_spot"].values()))))
             data+=temp
 
         if "frag" in j:
-            temp.append(";".join(map(str, js["stat"].values())))
+            temp.append(";".join(map(str, list(js["stat"].values()))))
             data+=temp
 
         if "NSC" in j:
@@ -79,4 +79,4 @@ for d in data:
         continue
     else:
         result = json_dataset_parse(d)
-        print(d, "\t".join(result))
+        print((d, "\t".join(result)))

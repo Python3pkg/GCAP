@@ -66,7 +66,7 @@ class Conf(object):
             return self._conf.items(section)
         except NoSectionError:
             if self._verbose_level >= 2:
-                print("Warning: No such section: ", section)
+                print(("Warning: No such section: ", section))
                 print("This will return a empty dict")
             return {}
 

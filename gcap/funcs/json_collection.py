@@ -88,7 +88,7 @@ def stat_dhs(input={"pks_spot_bed": "", "dhs_peaks": ""}, output={"json": ""},
     """
     peaks_info = {}
     for b, d, s in zip(input["pks_spot_bed"], input["dhs_peaks"], param["samples"]):
-        print(b, d, s)
+        print((b, d, s))
 
         peaks_info[s] = {}
         peaks_info[s]["total"] = len(open(b, 'r').readlines())

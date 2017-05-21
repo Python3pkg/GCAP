@@ -65,7 +65,7 @@ class JinjaTemplateCommand(AbstractCommand):
 
     def _simulate(self):
         """ Dry-run current command: Pretend to run but not invoke anything """
-        print("Rendering Latex part %s" % self.name, self.template)
+        print(("Rendering Latex part %s" % self.name, self.template))
         return True
 
 def template_dump(jinja_template):

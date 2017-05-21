@@ -35,12 +35,12 @@ class AbstractCommand(object):
         raise NotImplemented
 
     def update(self, **kwargs):
-        for k, v in kwargs.items():
+        for k, v in list(kwargs.items()):
             getattr(self, k).update(v)
         return self
 
     def set(self, **kwargs):
-        for k, v in kwargs.items():
+        for k, v in list(kwargs.items()):
             setattr(self, k, v)
         return self
 
@@ -85,7 +85,7 @@ class AbstractCommand(object):
                 return False
             return True
         except:
-            print("Exception encountered @", self.name)
+            print(("Exception encountered @", self.name))
             print_command_details(self)
             raise
 
@@ -101,7 +101,7 @@ class AbstractCommand(object):
                         3 - show workflow details           (verbose mode)
                         4 - debug mode                      (debug mode)
         """
-        for k, v in args.items():
+        for k, v in list(args.items()):
             setattr(self, k, v)
 
     @property
@@ -121,11 +121,11 @@ class AbstractCommand(object):
             start_with = ""
         else:
             start_with = "#"
-        print("#[{time:<12}] {head:<10}  {name:<50} \n{prefix}".format(
+        print(("#[{time:<12}] {head:<10}  {name:<50} \n{prefix}".format(
             head=head,
             name=self.name,
             time=strftime("%Y-%m-%d %H:%M:%S", localtime()),
-            prefix=start_with), *args)
+            prefix=start_with), *args))
         print()
 
     def _execute(self):
@@ -166,7 +166,7 @@ class AbstractCommand(object):
                     continue
             return missing
         except:
-            print("Exception encountered @", self.name, self.template)
+            print(("Exception encountered @", self.name, self.template))
             raise
 
     @property
@@ -212,7 +212,7 @@ class AbstractCommand(object):
     def _collect(self, obj):
         ret = []
         if isinstance(obj, dict):
-            for i in obj.values():
+            for i in list(obj.values()):
                 ret.extend(self._collect(i))
         elif isinstance(obj, str):
             ret = [obj]

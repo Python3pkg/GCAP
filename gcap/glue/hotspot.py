@@ -200,8 +200,8 @@ def main():
 
     # move out all the files we want to keep
     if args.onlyspot:
-        for hotfile, outfile in outputs.items():
-            print(" cp %s %s\n" % (hotfile, outfile))
+        for hotfile, outfile in list(outputs.items()):
+            print((" cp %s %s\n" % (hotfile, outfile)))
             os.rename(hotfile, outfile)
 
     return 0

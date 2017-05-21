@@ -47,7 +47,7 @@ class Workflow(AbstractCommand):
             except KeyError as ke:
                 error_keys.append([cmd.name, ke])
             except:
-                print("Exception encountered when rendering @", cmd.name)
+                print(("Exception encountered when rendering @", cmd.name))
                 print_command_details(cmd)
                 raise
 
@@ -66,9 +66,9 @@ class Workflow(AbstractCommand):
         for cmd in self:
             success_invoked = cmd.invoke()
             if not success_invoked:
-                print("{0:!^80}".format("Error happened! Workflow stopped!"))
+                print(("{0:!^80}".format("Error happened! Workflow stopped!")))
                 return False
-        print("{0:-^80}".format("Workflow finished successfully"))
+        print(("{0:-^80}".format("Workflow finished successfully")))
         return True
 
     def set_option(self, **args):
